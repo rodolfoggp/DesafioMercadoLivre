@@ -2,9 +2,10 @@
     <string name="app_name">DesafioMercadoLivre</string>
 
     <!-- Home -->
-    <string name="home_search_textview_placeholder">Buscar no Mercado Livre</string>
+    <string name="search_placeholder">Buscar no Mercado Livre</string>
     <string name="home_central_text">Utilize a busca acima \n para encontrar algum produto</string>
 
     <!-- Accessibility -->
-    <string name="accessibility_back_button">Back Button</string>
+    <string name="accessibility_back_button">Go Back</string>
+    <string name="accessibility_clear_button">Clear All Text</string>
 </resources>

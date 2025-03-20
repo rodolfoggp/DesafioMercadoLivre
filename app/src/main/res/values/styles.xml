@@ -12,7 +12,7 @@
     <style name="HomeSearchTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">@string/home_search_textview_placeholder</item>
+        <item name="android:text">@string/search_placeholder</item>
         <item name="android:textColor">@color/medium_gray</item>
         <item name="android:background">@drawable/rounded_corner</item>
         <item name="android:drawablePadding">14dp</item>
@@ -35,17 +35,25 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="ToolbarDivider">
+    <style name="SearchToolbarDivider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.5dp</item>
         <item name="android:background">@color/light_gray</item>
     </style>
 
-    <style name="BackButton">
+    <style name="SearchToolbarButton">
         <item name="android:layout_width">@dimen/back_button_size</item>
         <item name="android:layout_height">@dimen/back_button_size</item>
         <item name="android:elevation">@dimen/toolbar_elevation</item>
-        <item name="android:src">@drawable/ic_back_button</item>
+        <item name="android:tint">@color/medium_gray</item>
         <item name="android:background">@null</item>
+    </style>
+
+    <style name="SearchToolbarEditText">
+        <item name="android:textColor">@color/medium_gray</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:inputType">text</item>
+        <item name="android:imeOptions">actionSearch</item>
     </style>
 </resources>

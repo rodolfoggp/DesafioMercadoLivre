@@ -17,14 +17,38 @@
 
     <ImageButton
         android:id="@+id/backButton"
-        style="@style/BackButton"
+        android:src="@drawable/ic_back_button"
         android:contentDescription="@string/accessibility_back_button"
+        style="@style/SearchToolbarButton"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/search_placeholder"
+        style="@style/SearchToolbarEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/clearButton"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <ImageButton
+        android:id="@+id/clearButton"
+        android:src="@drawable/ic_clear_button"
+        android:contentDescription="@string/accessibility_clear_button"
+        style="@style/SearchToolbarButton"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible"/>
+
     <View
-        style="@style/ToolbarDivider"
+        android:id="@+id/view"
+        style="@style/SearchToolbarDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
