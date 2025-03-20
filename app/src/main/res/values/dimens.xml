@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="search_textview_padding">6dp</dimen>
+    <dimen name="back_button_size">64dp</dimen>
+    <dimen name="toolbar_elevation">8dp</dimen>
 </resources>

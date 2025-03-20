@@ -14,5 +14,12 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         useEdgeToEdge()
+        setupBackButton()
+    }
+
+    private fun setupBackButton() = with(binding) {
+        backButton.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
 }
