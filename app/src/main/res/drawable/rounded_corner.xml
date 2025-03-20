@@ -4,10 +4,10 @@
     <solid android:color="#ffffff" />
 
     <padding
-        android:left="@dimen/rounded_textview_padding"
-        android:right="@dimen/rounded_textview_padding"
-        android:bottom="@dimen/rounded_textview_padding"
-        android:top="@dimen/rounded_textview_padding" />
+        android:left="@dimen/search_textview_padding"
+        android:right="@dimen/search_textview_padding"
+        android:bottom="@dimen/search_textview_padding"
+        android:top="@dimen/search_textview_padding" />
 
     <corners android:radius="16dp" />
 </shape>
