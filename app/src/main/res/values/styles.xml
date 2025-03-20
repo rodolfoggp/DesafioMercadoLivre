@@ -27,4 +27,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@color/yellow</item>
     </style>
+
+    <style name="SearchToolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>
