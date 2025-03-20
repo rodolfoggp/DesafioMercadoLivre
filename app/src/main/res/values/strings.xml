@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DesafioMercadoLivre</string>
+    <string name="search_bar_placeholder">Buscar no Mercado Livre</string>
+    <string name="main_screen_text">Utilize a busca acima \n para encontrar algum produto</string>
+</resources>

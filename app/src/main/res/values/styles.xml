@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HomeCentralText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/main_screen_text</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/medium_gray</item>
+    </style>
+
+    <style name="HomeSearchTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/search_bar_placeholder</item>
+        <item name="android:textColor">@color/medium_gray</item>
+        <item name="android:background">@drawable/rounded_corner</item>
+        <item name="android:drawablePadding">14dp</item>
+        <item name="android:drawableLeft">@drawable/search</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginStart">36dp</item>
+        <item name="android:layout_marginEnd">36dp</item>
+    </style>
+</resources>
