@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onTextChanged
+import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivitySearchBinding
+import com.desafiomercadolivre.product.ProductsListActivity
 import com.desafiomercadolivre.search.presentation.model.SearchAction
 import com.desafiomercadolivre.search.presentation.model.SearchAction.Search
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -65,6 +67,8 @@ class SearchActivity : AppCompatActivity() {
 
 
     private fun goToProductsListActivity(query: String) {
-        // TODO
+        startActivity(ProductsListActivity::class.java) {
+            putExtra(ProductsListActivity.QUERY, query)
+        }
     }
 }
