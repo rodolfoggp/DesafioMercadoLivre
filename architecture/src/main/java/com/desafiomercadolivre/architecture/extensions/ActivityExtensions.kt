@@ -2,6 +2,7 @@ package com.desafiomercadolivre.architecture.extensions
 
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,6 +25,10 @@ fun AppCompatActivity.useEdgeToEdge() {
         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
         insets
     }
+}
+
+fun AppCompatActivity.showKeyboard() {
+    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
 }
 
 fun <A : AppCompatActivity> AppCompatActivity.startActivity(

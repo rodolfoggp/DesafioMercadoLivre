@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onTextChanged
+import com.desafiomercadolivre.architecture.extensions.showKeyboard
 import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
@@ -26,6 +27,11 @@ class SearchActivity : AppCompatActivity() {
         useEdgeToEdge()
         setupLayout()
         onAction(viewModel, ::handleAction)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        focusSearchEditText()
     }
 
     private fun setupLayout() {
@@ -59,6 +65,11 @@ class SearchActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
             editText.setText("")
         }
+    }
+
+    private fun focusSearchEditText() = with(binding) {
+        editText.requestFocus()
+        showKeyboard()
     }
 
     private fun handleAction(action: SearchAction) = when (action) {
