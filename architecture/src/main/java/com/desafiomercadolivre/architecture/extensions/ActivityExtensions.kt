@@ -1,5 +1,6 @@
 package com.desafiomercadolivre.architecture.extensions
 
+import android.content.Intent
 import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,4 +21,13 @@ fun AppCompatActivity.useEdgeToEdge() {
         v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
         insets
     }
+}
+
+fun <A : AppCompatActivity> AppCompatActivity.startActivity(
+    activityClass: Class<A>,
+    extras: (Intent.() -> Unit)? = null
+) {
+    val intent = Intent(this, activityClass)
+    extras?.let { intent.it() }
+    startActivity(intent)
 }
