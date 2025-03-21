@@ -11,7 +11,7 @@ import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivitySearchBinding
-import com.desafiomercadolivre.product.ProductsListActivity
+import com.desafiomercadolivre.product.presentation.ProductsListActivity
 import com.desafiomercadolivre.search.presentation.model.SearchAction
 import com.desafiomercadolivre.search.presentation.model.SearchAction.Search
 import org.koin.androidx.viewmodel.ext.android.viewModel

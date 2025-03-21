@@ -23,6 +23,7 @@ class ServerRobot {
     private val responseForPath = HashMap<String, MockResponse>()
 
     private fun createDispatcher() = dispatcher { request ->
+        request.log()
         responseForPath[request.path] ?: responseNotFound
     }
 
@@ -30,6 +31,8 @@ class ServerRobot {
         object : Dispatcher() {
             override fun dispatch(request: RecordedRequest) = handler(request)
         }
+
+    private fun RecordedRequest.log() = println("Request made to path: $path")
 
     fun setResponse(path: String, response: MockResponse) {
         responseForPath[path.withSlash()] = response

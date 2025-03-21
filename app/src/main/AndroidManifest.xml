@@ -16,7 +16,7 @@
         android:theme="@style/Theme.DesafioMercadoLivre"
         tools:targetApi="31">
         <activity
-            android:name=".product.ProductsListActivity"
+            android:name=".product.presentation.ProductsListActivity"
             android:exported="false" />
         <activity
             android:name=".home.presentation.HomeActivity"

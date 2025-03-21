@@ -17,6 +17,7 @@ kotlinxSerialization = "1.6.3"
 kotlinxConverter = "0.8.0"
 okHttp = "4.10.0"
 mockWebServer = "4.10.0"
+truth = "1.4.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +37,8 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 mock-web-server = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockWebServer" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+truth = { module = "com.google.truth:truth", version.ref = "truth"}
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -70,5 +73,6 @@ sharedtests = [
     "androidx-espresso-core",
     "mock-web-server",
     "koin",
-    "coroutines-test"
+    "coroutines-test",
+    "truth"
 ]

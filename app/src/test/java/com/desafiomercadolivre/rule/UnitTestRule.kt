@@ -10,7 +10,7 @@ import org.junit.runners.model.Statement
 class UnitTestRule : TestRule {
     override fun apply(base: Statement, description: Description): Statement {
         return RuleChain
-            .outerRule(KoinRule(*unitTestModules))
+            .outerRule(KoinRule(unitTestModules))
             //.around(MainDispatcherRule())
             //.around(InstantTaskExecutorRule())
             .apply(base, description)
