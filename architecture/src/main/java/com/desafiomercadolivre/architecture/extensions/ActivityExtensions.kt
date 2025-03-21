@@ -6,7 +6,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.desafiomercadolivre.architecture.presentation.ActionViewModel
+import kotlinx.coroutines.launch
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
     crossinline bindingInflater: (LayoutInflater) -> T
@@ -30,4 +33,11 @@ fun <A : AppCompatActivity> AppCompatActivity.startActivity(
     val intent = Intent(this, activityClass)
     extras?.let { intent.it() }
     startActivity(intent)
+}
+
+fun <Action> AppCompatActivity.onAction(
+    viewModel: ActionViewModel<Action>,
+    handleAction: (Action) -> Unit
+) = lifecycleScope.launch {
+    viewModel.action.collect { action -> handleAction(action) }
 }
