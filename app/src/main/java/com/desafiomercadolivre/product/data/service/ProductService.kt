@@ -8,13 +8,13 @@ import retrofit2.http.Query
 
 interface ProductService {
 
-    @GET(SEARCH_QUERY_ENDPOINT)
-    suspend fun searchQuery(
+    @GET(SEARCH_ENDPOINT)
+    suspend fun search(
         @Query("q") query: String,
         @Header("Authorization") authorizationHeader: BearerAuthorization,
     ): SearchQueryResponse
 
     companion object {
-        const val SEARCH_QUERY_ENDPOINT = "/sites/MLB/search"
+        const val SEARCH_ENDPOINT = "/sites/MLB/search"
     }
 }

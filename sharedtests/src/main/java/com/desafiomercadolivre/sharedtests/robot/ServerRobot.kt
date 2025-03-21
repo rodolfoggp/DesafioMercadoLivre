@@ -56,6 +56,7 @@ class ServerRobot {
     }
 
     fun takeRequest(): RecordedRequest = server.takeRequest()
+
     fun takeRequest(timeout: Long, unit: TimeUnit = TimeUnit.SECONDS) = server.takeRequest(timeout, unit)
 
     fun requestsHaveBeenMade() = server.requestCount > 0
@@ -65,9 +66,5 @@ class ServerRobot {
         return actualBody == expectedBody
     }
 
-    fun RecordedRequest.hasHeaders(vararg expectedHeaders: Pair<String, String>) =
-        expectedHeaders.all { headers[it.first] == it.second }
-
-    fun RecordedRequest.hasAuthorizationHeaderWith(token: String) =
-        headers["Authorization"] == "Bearer $token"
+    fun authorizationHeaderFor(accessToken: String) = "Authorization" to "Bearer $accessToken"
 }

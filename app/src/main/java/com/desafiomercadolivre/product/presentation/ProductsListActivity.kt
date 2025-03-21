@@ -27,7 +27,7 @@ class ProductsListActivity : AppCompatActivity() {
         super.onResume()
         lifecycleScope.launch {
             val authorizationHeader = BearerAuthorization("APP_USR-7092-031917-a89f85b7cf80039d243a9397312351a7-2341341668")
-            val response = service.searchQuery("Motorola G6", authorizationHeader)
+            val response = service.search("Motorola G6", authorizationHeader)
             println(response)
         }
     }
