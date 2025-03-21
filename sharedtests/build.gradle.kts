@@ -35,11 +35,11 @@ android {
 dependencies {
 
     implementation(project(":app"))
+    implementation(project(":architecture"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    
+    api(libs.bundles.sharedtests)
 }

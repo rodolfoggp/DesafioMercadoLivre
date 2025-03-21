@@ -43,11 +43,6 @@ dependencies {
     implementation(project(":architecture"))
     implementation(libs.bundles.app)
 
-    testImplementation(libs.junit)
-
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-
     testImplementation(project(":sharedtests"))
     androidTestImplementation(project(":sharedtests"))
 }
