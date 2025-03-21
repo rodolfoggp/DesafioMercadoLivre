@@ -40,12 +40,7 @@ android {
 
 dependencies {
     implementation(project(":architecture"))
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.koin)
+    implementation(libs.bundles.app)
 
     testImplementation(libs.junit)
 

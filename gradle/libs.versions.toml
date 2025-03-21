@@ -10,21 +10,50 @@ material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
 koin = "3.5.0"
+retrofit = "2.6.4"
+kotlinxSerialization = "1.6.3"
+kotlinxConverter = "0.8.0"
+okHttp = "4.10.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kotlinx-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "kotlinxConverter" }
+ok-http = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
+
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 
+[bundles]
+app = [
+    "androidx-core-ktx",
+    "androidx-appcompat",
+    "material",
+    "androidx-activity",
+    "androidx-constraintlayout",
+    "koin",
+    "retrofit",
+    "kotlinx-serialization",
+    "kotlinx-converter",
+    "ok-http"
+]
+
+architecture = [
+    "androidx-core-ktx",
+    "androidx-appcompat",
+    "material",
+    "koin"
+]
