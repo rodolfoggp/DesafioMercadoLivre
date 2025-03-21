@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "DesafioMercadoLivre"
 include(":app")
 include(":architecture")
+include(":sharedtests")
