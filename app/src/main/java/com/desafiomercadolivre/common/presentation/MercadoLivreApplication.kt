@@ -1,7 +1,7 @@
-package com.desafiomercadolivre.application
+package com.desafiomercadolivre.common.presentation
 
 import android.app.Application
-import com.desafiomercadolivre.application.di.mercadoLivreModules
+import com.desafiomercadolivre.common.di.mercadoLivreModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
