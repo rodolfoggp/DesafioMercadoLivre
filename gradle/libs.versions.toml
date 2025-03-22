@@ -18,6 +18,8 @@ kotlinxConverter = "0.8.0"
 okHttp = "4.10.0"
 mockWebServer = "4.10.0"
 truth = "1.4.4"
+coreTesting = "1.1.1"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -25,6 +27,7 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 
 koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
@@ -38,6 +41,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 mock-web-server = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockWebServer" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 truth = { module = "com.google.truth:truth", version.ref = "truth"}
+core-testing = { module = "android.arch.core:core-testing", version.ref = "coreTesting"}
 
 
 [plugins]
@@ -46,6 +50,7 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
+
 [bundles]
 app = [
     "androidx-core-ktx",
@@ -53,6 +58,7 @@ app = [
     "material",
     "androidx-activity",
     "androidx-constraintlayout",
+    "coroutines",
     "koin",
     "retrofit",
     "kotlinx-serialization",
@@ -63,6 +69,7 @@ app = [
 architecture = [
     "androidx-core-ktx",
     "androidx-appcompat",
+    "coroutines",
     "material",
     "koin"
 ]
@@ -74,5 +81,6 @@ sharedtests = [
     "mock-web-server",
     "koin",
     "coroutines-test",
-    "truth"
+    "truth",
+    "core-testing"
 ]

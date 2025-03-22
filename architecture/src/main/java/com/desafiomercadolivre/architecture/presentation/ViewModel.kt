@@ -17,9 +17,8 @@ abstract class ViewModel<State, Action>(
     private val _action = MutableSharedFlow<Action>()
     val action: SharedFlow<Action> = _action
 
-    fun changeState(change: State.() -> Unit) {
-        val newState = _state.value.apply(change)
-        _state.value = newState
+    fun changeState(change: (State) -> State) {
+        _state.value = change(_state.value)
     }
 
     fun sendAction(action: () -> Action) {

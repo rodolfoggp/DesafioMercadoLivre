@@ -7,8 +7,10 @@ import com.desafiomercadolivre.product.data.repository.ProductsRepositoryImpl
 import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.repository.ProductsRepository
 import com.desafiomercadolivre.product.domain.usecase.SearchProductsUseCase
+import com.desafiomercadolivre.product.presentation.ProductsListViewModel
 import com.desafiomercadolivre.search.data.datasource.AccessTokenDataSource
 import com.desafiomercadolivre.search.data.datasource.HardcodedAccessTokenDataSource
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
@@ -23,4 +25,6 @@ val productModule = module {
     factoryOf(::ProductsRepositoryImpl) bind ProductsRepository::class
 
     factory { SearchProductsUseCase(get<ProductsRepository>()::getByQuery) }
+
+    viewModelOf(::ProductsListViewModel)
 }
