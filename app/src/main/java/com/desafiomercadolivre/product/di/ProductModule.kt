@@ -6,6 +6,7 @@ import com.desafiomercadolivre.product.data.datasource.ProductsServiceDataSource
 import com.desafiomercadolivre.product.data.repository.ProductsRepositoryImpl
 import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.repository.ProductsRepository
+import com.desafiomercadolivre.product.domain.usecase.SearchProductsUseCase
 import com.desafiomercadolivre.search.data.datasource.AccessTokenDataSource
 import com.desafiomercadolivre.search.data.datasource.HardcodedAccessTokenDataSource
 import org.koin.core.module.dsl.factoryOf
@@ -20,4 +21,6 @@ val productModule = module {
     factoryOf(::HardcodedAccessTokenDataSource) bind AccessTokenDataSource::class
 
     factoryOf(::ProductsRepositoryImpl) bind ProductsRepository::class
+
+    factory { SearchProductsUseCase(get<ProductsRepository>()::getByQuery) }
 }
