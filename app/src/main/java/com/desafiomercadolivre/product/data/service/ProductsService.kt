@@ -10,11 +10,13 @@ interface ProductsService {
 
     @GET(SEARCH_ENDPOINT)
     suspend fun search(
-        @Query("q") query: String,
-        @Header("Authorization") authorizationHeader: BearerAuthorization,
+        @Query(QUERY_VARIABLE) query: String,
+        @Header(AUTHORIZATION_HEADER) authorizationHeader: BearerAuthorization,
     ): SearchQueryResponse
 
     companion object {
         const val SEARCH_ENDPOINT = "/sites/MLB/search"
+        const val QUERY_VARIABLE = "q"
+        const val AUTHORIZATION_HEADER = "Authorization"
     }
 }
