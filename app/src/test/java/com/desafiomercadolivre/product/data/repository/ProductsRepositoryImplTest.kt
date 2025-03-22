@@ -1,7 +1,9 @@
-package com.desafiomercadolivre.product.data.datasource
+package com.desafiomercadolivre.product.data.repository
 
 import com.desafiomercadolivre.architecture.extensions.inject
+import com.desafiomercadolivre.product.domain.repository.ProductsRepository
 import com.desafiomercadolivre.rule.UnitTestRule
+import com.desafiomercadolivre.sharedtests.robot.accessToken
 import com.desafiomercadolivre.sharedtests.robot.products
 import com.desafiomercadolivre.sharedtests.robot.server
 import com.google.common.truth.Truth.assertThat
@@ -9,36 +11,36 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
-class ProductsServiceDataSourceTest {
+class ProductsRepositoryImplTest {
     @get:Rule
     val rule = UnitTestRule()
 
-    private val dataSource: ProductsDataSource by inject()
+    private val repository: ProductsRepository by inject()
 
     private val query = "some query"
-    private val accessToken = "some access token"
 
     @Test
-    fun `datasource getByQuery should return expected products`() = runTest {
+    fun `getByQuery should return products from service`() = runTest {
         // Given
-        val expectedProducts = products { expectedProducts }
         products { searchEndpointReturnsSuccessFor(query) }
+        val expectedProducts = products { expectedProducts }
 
         // When
-        val result = dataSource.getByQuery(query, accessToken)
+        val result = repository.getByQuery(query)
 
         // Then
         assertThat(result).isEqualTo(expectedProducts)
     }
 
     @Test
-    fun `datasource getByQuery should use correct token`() = runTest {
+    fun `getByQuery should use correct access token`() = runTest {
         // Given
-        val expectedHeader = server { authorizationHeaderFor(accessToken) }
+        val accessToken = accessToken { get() }
         products { searchEndpointReturnsSuccessFor(query) }
+        val expectedHeader = server { authorizationHeaderFor(accessToken) }
 
         // When
-        dataSource.getByQuery(query, accessToken)
+        repository.getByQuery(query)
 
         // Then
         val request = server { takeRequest() }

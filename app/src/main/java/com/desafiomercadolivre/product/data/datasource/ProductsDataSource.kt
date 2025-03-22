@@ -1,4 +1,4 @@
-package com.desafiomercadolivre.product.domain.datasource
+package com.desafiomercadolivre.product.data.datasource
 
 import com.desafiomercadolivre.product.domain.model.Product
 

@@ -7,7 +7,7 @@ import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.common.data.model.BearerAuthorization
 import com.desafiomercadolivre.databinding.ActivityProductsListBinding
-import com.desafiomercadolivre.product.data.service.ProductService
+import com.desafiomercadolivre.product.data.service.ProductsService
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -22,7 +22,7 @@ class ProductsListActivity : AppCompatActivity() {
     }
 
 
-    private val service: ProductService by inject()
+    private val service: ProductsService by inject()
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch {

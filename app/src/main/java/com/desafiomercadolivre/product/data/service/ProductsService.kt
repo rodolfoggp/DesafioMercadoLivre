@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface ProductService {
+interface ProductsService {
 
     @GET(SEARCH_ENDPOINT)
     suspend fun search(

@@ -1,6 +1,6 @@
 package com.desafiomercadolivre.sharedtests.robot
 
-import com.desafiomercadolivre.product.data.service.ProductService
+import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.model.Product
 import com.desafiomercadolivre.sharedtests.common.data.file.file
 
@@ -25,7 +25,7 @@ class ProductsRobot {
     fun searchEndpointReturnsSuccessFor(query: String) = server {
         val encodedQuery = encode(query)
         setResponse(
-            ProductService.SEARCH_ENDPOINT + "?q=$encodedQuery",
+            ProductsService.SEARCH_ENDPOINT + "?q=$encodedQuery",
             response(body = successQueryJson),
         )
     }
