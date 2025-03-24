@@ -2,6 +2,7 @@ package com.desafiomercadolivre.product.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onStateChange
@@ -33,6 +34,12 @@ class ProductsListActivity : AppCompatActivity() {
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
             adapter = productsAdapter
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayoutManager.VERTICAL
+                )
+            )
         }
     }
 
