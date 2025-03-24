@@ -3,4 +3,8 @@
     <dimen name="search_textview_padding">6dp</dimen>
     <dimen name="back_button_size">48dp</dimen>
     <dimen name="toolbar_elevation">8dp</dimen>
+    <dimen name="products_list_image_padding">8dp</dimen>
+    <dimen name="small_text">9sp</dimen>
+    <dimen name="price_text">18sp</dimen>
+    <dimen name="medium_margin">8dp</dimen>
 </resources>

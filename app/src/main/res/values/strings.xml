@@ -8,4 +8,8 @@
     <!-- Accessibility -->
     <string name="accessibility_back_button">Go Back</string>
     <string name="accessibility_clear_button">Clear All Text</string>
+
+    <!-- Products List -->
+    <string name="installments_prefix">em</string>
+    <string name="free_shipping">Frete grátis</string>
 </resources>
