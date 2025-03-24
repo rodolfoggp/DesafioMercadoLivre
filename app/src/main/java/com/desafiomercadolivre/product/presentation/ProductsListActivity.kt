@@ -2,34 +2,57 @@ package com.desafiomercadolivre.product.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.desafiomercadolivre.architecture.extensions.onAction
+import com.desafiomercadolivre.architecture.extensions.onStateChange
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
-import com.desafiomercadolivre.common.data.model.BearerAuthorization
 import com.desafiomercadolivre.databinding.ActivityProductsListBinding
-import com.desafiomercadolivre.product.data.service.ProductsService
-import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import com.desafiomercadolivre.product.presentation.model.ProductsListAction
+import com.desafiomercadolivre.product.presentation.model.ProductsListAction.ShowSearchScreen
+import com.desafiomercadolivre.product.presentation.model.ProductsListState
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductsListActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityProductsListBinding::inflate)
+    private val viewModel: ProductsListViewModel by viewModel()
+    private val productsAdapter = ProductsAdapter(::onProductClicked)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         useEdgeToEdge()
+        setupLayout()
+        initializeViewModel()
+        onStateChange(viewModel, ::handleState)
+        onAction(viewModel, ::handleAction)
     }
 
-
-    private val service: ProductsService by inject()
-    override fun onResume() {
-        super.onResume()
-        lifecycleScope.launch {
-            val authorizationHeader = BearerAuthorization("APP_USR-7092-031917-a89f85b7cf80039d243a9397312351a7-2341341668")
-            val response = service.search("Motorola G6", authorizationHeader)
-            println(response)
+    private fun setupLayout() = with(binding) {
+        with(recyclerView) {
+            layoutManager = LinearLayoutManager(context)
+            adapter = productsAdapter
         }
+    }
+
+    private fun initializeViewModel() {
+        val query = intent.getStringExtra(QUERY)!!
+        viewModel.searchProducts(query)
+    }
+
+    private fun handleState(state: ProductsListState) = with(state) {
+        productsAdapter.updateData(products)
+    }
+
+    private fun handleAction(action: ProductsListAction) {
+        when (action) {
+            ShowSearchScreen -> TODO()
+        }
+    }
+
+    private fun onProductClicked(productId: String) {
+        TODO("Not yet implemented")
     }
 
     companion object {
