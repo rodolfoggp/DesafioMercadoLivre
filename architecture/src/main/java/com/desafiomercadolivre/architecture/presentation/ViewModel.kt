@@ -12,7 +12,7 @@ abstract class ViewModel<State, Action>(
     initialState: State,
 ) : ViewModel() {
     private var _state = MutableStateFlow(initialState)
-    val stateFlow: StateFlow<State> = _state
+    val state: StateFlow<State> = _state
 
     private val _action = MutableSharedFlow<Action>()
     val action: SharedFlow<Action> = _action

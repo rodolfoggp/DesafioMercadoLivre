@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
 import com.desafiomercadolivre.architecture.presentation.ActionViewModel
+import com.desafiomercadolivre.architecture.presentation.ViewModel
 import kotlinx.coroutines.launch
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
@@ -42,6 +43,20 @@ fun <A : AppCompatActivity> AppCompatActivity.startActivity(
 
 fun <Action> AppCompatActivity.onAction(
     viewModel: ActionViewModel<Action>,
+    handleAction: (Action) -> Unit
+) = lifecycleScope.launch {
+    viewModel.action.collect { action -> handleAction(action) }
+}
+
+fun <State, Action> AppCompatActivity.onStateChange(
+    viewModel: ViewModel<State, Action>,
+    handleState: (State) -> Unit
+) = lifecycleScope.launch {
+    viewModel.state.collect { state -> handleState(state) }
+}
+
+fun <State, Action> AppCompatActivity.onAction(
+    viewModel: ViewModel<State, Action>,
     handleAction: (Action) -> Unit
 ) = lifecycleScope.launch {
     viewModel.action.collect { action -> handleAction(action) }
