@@ -2,6 +2,7 @@ package com.desafiomercadolivre.product.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.desafiomercadolivre.architecture.extensions.onAction
@@ -49,6 +50,7 @@ class ProductsListActivity : AppCompatActivity() {
     }
 
     private fun handleState(state: ProductsListState) = with(state) {
+        binding.loading.isVisible = isLoading
         productsAdapter.updateData(products)
     }
 
