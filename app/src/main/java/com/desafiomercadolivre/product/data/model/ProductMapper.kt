@@ -41,7 +41,7 @@ class ProductMapper(private val resourceProvider: ResourceProvider) {
     private fun SearchQueryResponseItem.getBrand(): String? =
         attributes.firstOrNull { id == "BRAND" }?.valueName
 
-    private fun SearchQueryInstallments.getInstallmentsText(): String {
+    private fun SearchQueryResponseInstallments.getInstallmentsText(): String {
         val installments = resourceProvider.getString(R.string.installments, quantity, amount.asPriceString())
         val interests = if (!metadata.additionalBankInterest)  {
             resourceProvider.getString(R.string.no_interest)
