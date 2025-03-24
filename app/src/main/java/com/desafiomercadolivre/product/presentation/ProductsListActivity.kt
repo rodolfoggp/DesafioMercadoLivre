@@ -52,7 +52,7 @@ class ProductsListActivity : AppCompatActivity() {
     }
 
     private fun onProductClicked(productId: String) {
-        TODO("Not yet implemented")
+
     }
 
     companion object {

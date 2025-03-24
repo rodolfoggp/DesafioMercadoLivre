@@ -1,11 +1,12 @@
 package com.desafiomercadolivre.product.presentation
 
-import com.desafiomercadolivre.databinding.ProductsListItemBinding
-import com.desafiomercadolivre.product.domain.model.Product
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.desafiomercadolivre.databinding.ProductsListItemBinding
+import com.desafiomercadolivre.product.domain.model.Product
 
 class ProductsAdapter(
     val onClickAction: (String) -> Unit,
@@ -20,6 +21,14 @@ class ProductsAdapter(
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        val context = holder.binding.root.context
+        val glide = Glide.with(context)
+        with(holder.binding) {
+            with(products[position]) {
+                glide.load(imageUrl).into(productImage)
+
+            }
+        }
         /*val glide = Glide.with(holder.binding.root.context)
         with(holder.binding) {
             with(games[position]) {
@@ -42,7 +51,7 @@ class ProductsAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ProductViewHolder(binding: ProductsListItemBinding) :
+    inner class ProductViewHolder(val binding: ProductsListItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
         init {
