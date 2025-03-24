@@ -1,8 +1,10 @@
 package com.desafiomercadolivre.product.di
 
 import com.desafiomercadolivre.common.data.service.MercadoLivreApi
+import com.desafiomercadolivre.common.resource.ResourceProvider
 import com.desafiomercadolivre.product.data.datasource.ProductsDataSource
 import com.desafiomercadolivre.product.data.datasource.ProductsServiceDataSource
+import com.desafiomercadolivre.product.data.model.ProductMapper
 import com.desafiomercadolivre.product.data.repository.ProductsRepositoryImpl
 import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.repository.ProductsRepository
@@ -21,6 +23,8 @@ val productModule = module {
 
     factoryOf(::ProductsServiceDataSource) bind ProductsDataSource::class
     factoryOf(::HardcodedAccessTokenDataSource) bind AccessTokenDataSource::class
+    factoryOf(::ProductMapper)
+    factoryOf(::ResourceProvider)
 
     factoryOf(::ProductsRepositoryImpl) bind ProductsRepository::class
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/productImage"
@@ -79,7 +79,7 @@
         />
 
     <TextView
-        android:id="@+id/priceUnits"
+        android:id="@+id/priceInteger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/price_text"
@@ -95,8 +95,8 @@
         android:textSize="@dimen/small_text"
         android:textStyle="bold"
         android:layout_marginVertical="2dp"
-        app:layout_constraintStart_toEndOf="@id/priceUnits"
-        app:layout_constraintTop_toTopOf="@id/priceUnits"
+        app:layout_constraintStart_toEndOf="@id/priceInteger"
+        app:layout_constraintTop_toTopOf="@id/priceInteger"
         tools:text="99" />
 
     <TextView
@@ -106,8 +106,8 @@
         android:textSize="@dimen/small_text"
         android:text="@string/installments_prefix"
         android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@+id/priceUnits"
-        app:layout_constraintTop_toBottomOf="@+id/priceUnits" />
+        app:layout_constraintStart_toStartOf="@+id/priceInteger"
+        app:layout_constraintTop_toBottomOf="@+id/priceInteger" />
 
     <TextView
         android:id="@+id/installmentsConditions"

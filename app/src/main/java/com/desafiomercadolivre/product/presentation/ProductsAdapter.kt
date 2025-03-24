@@ -1,10 +1,13 @@
 package com.desafiomercadolivre.product.presentation
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.desafiomercadolivre.R
 import com.desafiomercadolivre.databinding.ProductsListItemBinding
 import com.desafiomercadolivre.product.domain.model.Product
 
@@ -23,11 +26,24 @@ class ProductsAdapter(
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val context = holder.binding.root.context
         val glide = Glide.with(context)
+        val product = products[position]
         with(holder.binding) {
-            with(products[position]) {
-                glide.load(imageUrl).into(productImage)
+            glide.load(product.imageUrl).into(productImage)
 
+            brand.apply {
+                text = product.brand
+                isVisible = !text.isNullOrBlank()
             }
+
+            title.text = product.title
+
+            originalPrice.apply {
+                text = product.originalPrice
+                isVisible = !text.isNullOrBlank()
+            }
+
+            priceInteger.text = product.integerPrice
+            priceFractional.text = product.fractionalPrice
         }
         /*val glide = Glide.with(holder.binding.root.context)
         with(holder.binding) {
@@ -44,10 +60,13 @@ class ProductsAdapter(
         }*/
     }
 
+    private fun Context.priceStringInBRL(price: String?): String? =
+        price?.let { resources.getString(R.string.price_in_brl, it) }
+
     override fun getItemCount() = products.size
 
-    fun updateData(newGames: List<Product>) {
-        products = newGames
+    fun updateData(newProducts: List<Product>) {
+        products = newProducts
         notifyDataSetChanged()
     }
 

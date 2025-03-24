@@ -12,4 +12,5 @@
     <!-- Products List -->
     <string name="installments_prefix">em</string>
     <string name="free_shipping">Frete grátis</string>
+    <string name="price_in_brl">R$ %1$s</string>
 </resources>
