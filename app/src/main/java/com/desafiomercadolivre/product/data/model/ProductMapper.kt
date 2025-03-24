@@ -17,17 +17,18 @@ class ProductMapper(private val resourceProvider: ResourceProvider) {
             originalPrice = originalPrice?.asPriceString()?.withCurrency(),
             imageUrl = thumbnail.withHttps(),
             brand = getBrand(),
+            installments = installments?.getInstallmentsText(),
         )
     }
 
     private fun Double.asPriceString() =
-    String.format(Locale.getDefault(), "%.2f", this)
+        String.format(Locale("pt", "BR"), "%.2f", this)
 
     private fun String.withCurrency() =
         resourceProvider.getString(R.string.price_in_brl, this)
 
     private fun priceAsIntegerAndFractional(price: Double): Pair<String, String?> {
-        val parts = price.asPriceString().split(".")
+        val parts = price.asPriceString().split(",")
 
         val priceInteger = parts[0]
 
@@ -39,6 +40,16 @@ class ProductMapper(private val resourceProvider: ResourceProvider) {
 
     private fun SearchQueryResponseItem.getBrand(): String? =
         attributes.firstOrNull { id == "BRAND" }?.valueName
+
+    private fun SearchQueryInstallments.getInstallmentsText(): String {
+        val installments = resourceProvider.getString(R.string.installments, quantity, amount.asPriceString())
+        val interests = if (!metadata.additionalBankInterest)  {
+            resourceProvider.getString(R.string.no_interest)
+        } else {
+            ""
+        }
+        return "$installments $interests"
+    }
 
     private fun String.withHttps() =
         if (startsWith("http")) {

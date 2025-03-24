@@ -9,4 +9,5 @@ data class Product(
     val originalPrice: String? = null,
     val imageUrl: String,
     val brand: String?,
+    val installments: String?,
 )

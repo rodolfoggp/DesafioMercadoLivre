@@ -13,4 +13,6 @@
     <string name="installments_prefix">em</string>
     <string name="free_shipping">Frete grátis</string>
     <string name="price_in_brl">R$ %1$s</string>
+    <string name="installments">em %1$dx R$ %2$s</string>
+    <string name="no_interest">sem juros</string>
 </resources>

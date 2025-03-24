@@ -100,23 +100,14 @@
         tools:text="99" />
 
     <TextView
-        android:id="@+id/installmentsPrefix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/small_text"
-        android:text="@string/installments_prefix"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="@+id/priceInteger"
-        app:layout_constraintTop_toBottomOf="@+id/priceInteger" />
-
-    <TextView
         android:id="@+id/installmentsConditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/small_text"
-        app:layout_constraintStart_toEndOf="@+id/installmentsPrefix"
-        app:layout_constraintTop_toTopOf="@+id/installmentsPrefix"
-        tools:text="8x R$ 56,24 sem juros" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/priceInteger"
+        app:layout_constraintTop_toBottomOf="@+id/priceInteger"
+        tools:text="em 8x R$ 56,24 sem juros" />
 
     <TextView
         android:id="@+id/freeShippingTag"
@@ -127,7 +118,7 @@
         android:textColor="@color/green"
         android:textSize="@dimen/small_text"
         android:layout_marginTop="@dimen/medium_margin"
-        app:layout_constraintStart_toStartOf="@+id/installmentsPrefix"
-        app:layout_constraintTop_toBottomOf="@+id/installmentsPrefix" />
+        app:layout_constraintStart_toStartOf="@+id/installmentsConditions"
+        app:layout_constraintTop_toBottomOf="@+id/installmentsConditions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

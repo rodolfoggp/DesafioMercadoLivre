@@ -44,6 +44,8 @@ class ProductsAdapter(
 
             priceInteger.text = product.integerPrice
             priceFractional.text = product.fractionalPrice
+
+            installmentsConditions.text = product.installments
         }
         /*val glide = Glide.with(holder.binding.root.context)
         with(holder.binding) {
