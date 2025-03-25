@@ -34,18 +34,25 @@ class ProductDetailsActivity : AppCompatActivity() {
         onAction(viewModel, ::handleAction)
     }
 
-    private fun setupLayout()  = with(binding) {
+    private fun setupLayout() = with(binding) {
         toolbar.searchView.setOnClickListener { viewModel.onSearchViewClicked() }
     }
 
     private fun setupViewModel() {
-        val serializedProduct = intent.getStringExtra(PRODUCT)!!
-        val product = Json.decodeFromString<Product>(serializedProduct)
+        val serializedProduct = intent.getStringExtra(PRODUCT)
+        val product = serializedProduct?.let { Json.decodeFromString<Product>(it) }
         viewModel.setProduct(product)
     }
 
-    private fun handleState(state: ProductDetailsState) = state.product?.let {
-        with(binding) {
+    private fun handleState(state: ProductDetailsState) = with(state) {
+        error?.let {
+            //handleError
+        }
+        product?.let { showProduct(it) }
+    }
+
+    private fun showProduct(product: Product) = with(binding) {
+        product.let {
             Glide.with(this@ProductDetailsActivity)
                 .load(it.imageUrl)
                 .into(productImage)

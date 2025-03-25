@@ -15,10 +15,11 @@ class ProductsListViewModel(
     val searchProductsUseCase: SearchProductsUseCase,
 ) : ViewModel<ProductsListState, ProductsListAction>(ProductsListState()) {
 
-    fun searchProducts(query: String) = viewModelScope.launch {
+    fun searchProducts(query: String?) = viewModelScope.launch {
         runCatching {
-            val products = searchProductsUseCase(query)
-            changeState { it.copy(products = products, isLoading = false) }
+            changeState { ProductsListState(isLoading = true) }
+            val products = searchProductsUseCase(query ?: throw IllegalArgumentException())
+            changeState { ProductsListState(products = products) }
         }.onFailure(::handleError)
     }
 
@@ -29,7 +30,7 @@ class ProductsListViewModel(
             is IOException -> NO_INTERNET
             else -> UNKNOWN_ERROR
         }
-        changeState { it.copy(isLoading = false, products = null, error = error) }
+        changeState { ProductsListState(error = error) }
     }
 
     enum class ProductsListError {

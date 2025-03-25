@@ -59,18 +59,15 @@ class ProductsListActivity : AppCompatActivity() {
     }
 
     private fun initializeViewModel() {
-        val query = intent.getStringExtra(QUERY)!!
+        val query = intent.getStringExtra(QUERY)
         viewModel.searchProducts(query)
     }
 
     private fun handleState(state: ProductsListState) = with(state) {
         with(binding) {
             loading.isVisible = isLoading
-
             errorView.root.isVisible = error?.handleError() != null
-
-            recyclerView.isVisible = !isLoading && error == null
-            productsAdapter.updateData(products ?: emptyList())
+            recyclerView.isVisible = products?.let { productsAdapter.updateData(it) } != null
         }
     }
 
@@ -82,6 +79,7 @@ class ProductsListActivity : AppCompatActivity() {
                 icon = R.drawable.ic_warning
                 errorMessage = getString(R.string.something_bad_happened_error)
             }
+
             NO_INTERNET -> {
                 icon = R.drawable.ic_no_internet
                 errorMessage = getString(R.string.no_internet_error)
