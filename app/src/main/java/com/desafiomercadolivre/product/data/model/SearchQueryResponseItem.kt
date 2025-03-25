@@ -12,4 +12,6 @@ data class SearchQueryResponseItem(
     val thumbnail: String,
     val attributes: List<SearchQueryResponseAttribute>,
     val installments: SearchQueryResponseInstallments?,
+    val shipping: SearchQueryResponseShipping?,
 )
+

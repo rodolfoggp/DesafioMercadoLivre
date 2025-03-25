@@ -1,13 +1,11 @@
 package com.desafiomercadolivre.product.presentation
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.desafiomercadolivre.R
 import com.desafiomercadolivre.databinding.ProductsListItemBinding
 import com.desafiomercadolivre.product.domain.model.Product
 
@@ -46,24 +44,10 @@ class ProductsAdapter(
             priceFractional.text = product.fractionalPrice
 
             installmentsConditions.text = product.installments
-        }
-        /*val glide = Glide.with(holder.binding.root.context)
-        with(holder.binding) {
-            with(games[position]) {
-                team1Name.text = team1Performance.team
-                team2Name.text = team2Performance.team
-                team1Score.text = team1Performance.score.toString()
-                team2Score.text = team2Performance.score.toString()
-                date.text = dateTime.weekDayAndDateString()
-                time.text = dateTime.timeString()
-                glide.load(team1Performance.badge).into(team1Badge)
-                glide.load(team2Performance.badge).into(team2Badge)
-            }
-        }*/
-    }
 
-    private fun Context.priceStringInBRL(price: String?): String? =
-        price?.let { resources.getString(R.string.price_in_brl, it) }
+            freeShippingTag.isVisible = product.hasFreeShipping
+        }
+    }
 
     override fun getItemCount() = products.size
 

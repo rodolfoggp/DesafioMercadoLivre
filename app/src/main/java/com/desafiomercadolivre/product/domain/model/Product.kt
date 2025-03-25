@@ -13,4 +13,5 @@ data class Product(
     val imageUrl: String,
     val brand: String?,
     val installments: String?,
+    val hasFreeShipping: Boolean
 )

@@ -18,6 +18,7 @@ class ProductMapper(private val resourceProvider: ResourceProvider) {
             imageUrl = thumbnail.withHttps(),
             brand = getBrand(),
             installments = installments?.getInstallmentsText(),
+            hasFreeShipping = shipping?.isFree ?: false
         )
     }
 
