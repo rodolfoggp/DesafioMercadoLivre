@@ -66,12 +66,12 @@ class ProductsListActivity : AppCompatActivity() {
     private fun handleState(state: ProductsListState) = with(state) {
         with(binding) {
             loading.isVisible = isLoading
-            errorView.root.isVisible = error?.handleError() != null
+            errorView.root.isVisible = error?.showError() != null
             recyclerView.isVisible = products?.let { productsAdapter.updateData(it) } != null
         }
     }
 
-    private fun ProductsListError.handleError() {
+    private fun ProductsListError.showError() {
         val errorMessage: String
         val icon: Int
         when (this) {

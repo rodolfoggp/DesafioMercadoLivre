@@ -28,19 +28,19 @@ class ProductsAdapter(
         with(holder.binding) {
             glide.load(product.imageUrl)
                 .into(productImage)
-            brand.apply {
+            brandTextView.apply {
                 text = product.brand
                 isVisible = !text.isNullOrBlank()
             }
-            title.text = product.title
-            originalPrice.apply {
+            titleTextView.text = product.title
+            originalPriceTextView.apply {
                 text = product.originalPrice
                 isVisible = !text.isNullOrBlank()
             }
-            priceInteger.text = product.integerPrice
-            priceFractional.text = product.fractionalPrice
-            installmentsConditions.text = product.installments
-            freeShippingTag.isVisible = product.hasFreeShipping
+            priceIntegerTextView.text = product.integerPrice
+            priceFractionalTextView.text = product.fractionalPrice
+            installmentsConditionsTextView.text = product.installments
+            freeShippingTagTextView.isVisible = product.hasFreeShipping
         }
     }
 

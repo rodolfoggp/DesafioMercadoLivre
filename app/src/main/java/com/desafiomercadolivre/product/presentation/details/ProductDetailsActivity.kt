@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
+import com.desafiomercadolivre.R
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onStateChange
 import com.desafiomercadolivre.architecture.extensions.startActivity
@@ -12,6 +13,8 @@ import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivityProductDetailsBinding
 import com.desafiomercadolivre.product.domain.model.Product
+import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel.ProductDetailsError
+import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel.ProductDetailsError.NULL_PRODUCT
 import com.desafiomercadolivre.product.presentation.details.model.ProductDetailsAction
 import com.desafiomercadolivre.product.presentation.details.model.ProductDetailsAction.ShowSearchScreen
 import com.desafiomercadolivre.product.presentation.details.model.ProductDetailsState
@@ -23,6 +26,7 @@ class ProductDetailsActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityProductDetailsBinding::inflate)
     private val viewModel by viewModel<ProductDetailsViewModel>()
+    private val glide by lazy { Glide.with(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,31 +49,40 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun handleState(state: ProductDetailsState) = with(state) {
-        error?.let {
-            //handleError
-        }
-        product?.let { showProduct(it) }
+        binding.errorView.root.isVisible = error?.showError() != null
+        binding.content.isVisible = product?.showProduct() != null
     }
 
-    private fun showProduct(product: Product) = with(binding) {
-        product.let {
-            Glide.with(this@ProductDetailsActivity)
-                .load(it.imageUrl)
-                .into(productImage)
-            brand.apply {
-                text = it.brand
-                isVisible = !text.isNullOrBlank()
+    private fun ProductDetailsError.showError() {
+        val errorMessage: String
+        val icon: Int
+        when (this) {
+            NULL_PRODUCT -> {
+                errorMessage = getString(R.string.something_bad_happened_error)
+                icon = R.drawable.ic_warning
             }
-            title.text = it.title
-            originalPrice.apply {
-                text = it.originalPrice
-                isVisible = !text.isNullOrBlank()
-            }
-            priceInteger.text = it.integerPrice
-            priceFractional.text = it.fractionalPrice
-            installmentsConditions.text = it.installments
-            freeShippingTag.isVisible = it.hasFreeShipping
         }
+        with(binding.errorView) {
+            glide.load(icon).into(errorIcon)
+            errorText.text = errorMessage
+        }
+    }
+
+    private fun Product.showProduct() = with(binding) {
+        glide.load(imageUrl).into(productImage)
+        brandTextView.apply {
+            text = brand
+            isVisible = !text.isNullOrBlank()
+        }
+        titleTextView.text = title
+        originalPriceTextView.apply {
+            text = originalPrice
+            isVisible = !text.isNullOrBlank()
+        }
+        priceIntegerTextView.text = integerPrice
+        priceFractionalTextView.text = fractionalPrice
+        installmentsConditionsTextView.text = installments
+        freeShippingTagTextView.isVisible = hasFreeShipping
     }
 
     private fun handleAction(action: ProductDetailsAction) {
