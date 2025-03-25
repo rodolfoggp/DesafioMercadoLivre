@@ -26,25 +26,20 @@ class ProductsAdapter(
         val glide = Glide.with(context)
         val product = products[position]
         with(holder.binding) {
-            glide.load(product.imageUrl).into(productImage)
-
+            glide.load(product.imageUrl)
+                .into(productImage)
             brand.apply {
                 text = product.brand
                 isVisible = !text.isNullOrBlank()
             }
-
             title.text = product.title
-
             originalPrice.apply {
                 text = product.originalPrice
                 isVisible = !text.isNullOrBlank()
             }
-
             priceInteger.text = product.integerPrice
             priceFractional.text = product.fractionalPrice
-
             installmentsConditions.text = product.installments
-
             freeShippingTag.isVisible = product.hasFreeShipping
         }
     }

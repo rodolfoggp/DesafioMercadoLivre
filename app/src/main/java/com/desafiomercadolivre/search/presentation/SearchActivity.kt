@@ -54,10 +54,8 @@ class SearchActivity : AppCompatActivity() {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val query = editText.text.toString()
                 viewModel.onSearchButtonClicked(query)
-                true
-            } else {
-                false
             }
+            false
         }
     }
 
