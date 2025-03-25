@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".product.presentation.ProductsListActivity">
+    tools:context=".product.presentation.list.ProductsListActivity">
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/loading"

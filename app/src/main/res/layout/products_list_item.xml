@@ -64,7 +64,7 @@
         android:textColor="@color/medium_gray"
         app:layout_constraintStart_toEndOf="@id/productImage"
         app:layout_constraintTop_toBottomOf="@id/priceSpacing"
-        tools:text="R$ 649"
+        tools:text="R$ 699"
         tools:ignore="SmallSp" />
 
     <View
@@ -82,7 +82,7 @@
         android:id="@+id/priceInteger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/price_text"
+        android:textSize="@dimen/list_integer_price_text"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/productImage"
         app:layout_constraintTop_toBottomOf="@id/originalPrice"

@@ -1,4 +1,4 @@
-package com.desafiomercadolivre.product.presentation
+package com.desafiomercadolivre.product.presentation.list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +13,9 @@ import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivityProductsListBinding
 import com.desafiomercadolivre.product.domain.model.Product
 import com.desafiomercadolivre.product.presentation.details.ProductDetailsActivity
-import com.desafiomercadolivre.product.presentation.model.ProductsListAction
-import com.desafiomercadolivre.product.presentation.model.ProductsListAction.ShowSearchScreen
-import com.desafiomercadolivre.product.presentation.model.ProductsListState
+import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction
+import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction.ShowSearchScreen
+import com.desafiomercadolivre.product.presentation.list.model.ProductsListState
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel

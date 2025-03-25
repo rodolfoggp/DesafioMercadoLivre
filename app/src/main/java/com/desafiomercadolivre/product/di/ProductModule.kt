@@ -9,7 +9,7 @@ import com.desafiomercadolivre.product.data.repository.ProductsRepositoryImpl
 import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.repository.ProductsRepository
 import com.desafiomercadolivre.product.domain.usecase.SearchProductsUseCase
-import com.desafiomercadolivre.product.presentation.ProductsListViewModel
+import com.desafiomercadolivre.product.presentation.list.ProductsListViewModel
 import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel
 import com.desafiomercadolivre.search.data.datasource.AccessTokenDataSource
 import com.desafiomercadolivre.search.data.datasource.HardcodedAccessTokenDataSource

@@ -1,4 +1,4 @@
-package com.desafiomercadolivre.product.presentation.model
+package com.desafiomercadolivre.product.presentation.list.model
 
 import com.desafiomercadolivre.product.domain.model.Product
 

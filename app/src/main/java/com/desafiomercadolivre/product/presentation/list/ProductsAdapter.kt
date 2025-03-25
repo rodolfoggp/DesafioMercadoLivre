@@ -1,4 +1,4 @@
-package com.desafiomercadolivre.product.presentation
+package com.desafiomercadolivre.product.presentation.list
 
 import android.view.LayoutInflater
 import android.view.View
