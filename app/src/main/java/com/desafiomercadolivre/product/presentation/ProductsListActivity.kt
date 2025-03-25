@@ -7,12 +7,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onStateChange
+import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivityProductsListBinding
+import com.desafiomercadolivre.product.domain.model.Product
+import com.desafiomercadolivre.product.presentation.details.ProductDetailsActivity
 import com.desafiomercadolivre.product.presentation.model.ProductsListAction
 import com.desafiomercadolivre.product.presentation.model.ProductsListAction.ShowSearchScreen
 import com.desafiomercadolivre.product.presentation.model.ProductsListState
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProductsListActivity : AppCompatActivity() {
@@ -60,8 +65,11 @@ class ProductsListActivity : AppCompatActivity() {
         }
     }
 
-    private fun onProductClicked(productId: String) {
-
+    private fun onProductClicked(product: Product) {
+        val serializedProduct = Json.encodeToString(product)
+        startActivity(ProductDetailsActivity::class.java) {
+            putExtra(ProductDetailsActivity.PRODUCT, serializedProduct)
+        }
     }
 
     companion object {

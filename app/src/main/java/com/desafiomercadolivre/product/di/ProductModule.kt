@@ -10,6 +10,7 @@ import com.desafiomercadolivre.product.data.service.ProductsService
 import com.desafiomercadolivre.product.domain.repository.ProductsRepository
 import com.desafiomercadolivre.product.domain.usecase.SearchProductsUseCase
 import com.desafiomercadolivre.product.presentation.ProductsListViewModel
+import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel
 import com.desafiomercadolivre.search.data.datasource.AccessTokenDataSource
 import com.desafiomercadolivre.search.data.datasource.HardcodedAccessTokenDataSource
 import org.koin.androidx.viewmodel.dsl.viewModelOf
@@ -31,4 +32,5 @@ val productModule = module {
     factory { SearchProductsUseCase(get<ProductsRepository>()::getByQuery) }
 
     viewModelOf(::ProductsListViewModel)
+    viewModelOf(::ProductDetailsViewModel)
 }

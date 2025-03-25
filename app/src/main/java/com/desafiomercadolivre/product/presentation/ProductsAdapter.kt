@@ -12,7 +12,7 @@ import com.desafiomercadolivre.databinding.ProductsListItemBinding
 import com.desafiomercadolivre.product.domain.model.Product
 
 class ProductsAdapter(
-    val onClickAction: (String) -> Unit,
+    val onClickAction: (Product) -> Unit,
 ) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
 
     private var products: List<Product> = listOf()
@@ -79,6 +79,6 @@ class ProductsAdapter(
             binding.root.setOnClickListener(this)
         }
 
-        override fun onClick(v: View?) = onClickAction(products[layoutPosition].id)
+        override fun onClick(v: View?) = onClickAction(products[layoutPosition])
     }
 }

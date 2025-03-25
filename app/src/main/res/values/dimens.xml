@@ -7,4 +7,5 @@
     <dimen name="small_text">9sp</dimen>
     <dimen name="price_text">18sp</dimen>
     <dimen name="medium_margin">8dp</dimen>
+    <dimen name="large_margin">16dp</dimen>
 </resources>

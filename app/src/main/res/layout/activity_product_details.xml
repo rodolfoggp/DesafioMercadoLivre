@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".product.presentation.details.ProductDetailsActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:layout_margin="@dimen/large_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Moto G6 Dual Sim 64 Gb Preto 4 Gb Ram - Excelente (Recondicionado) Moto G6 Dual Sim 64 Gb Preto 4 Gb Ram - Excelente" />
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="300dp"
+        android:padding="@dimen/products_list_image_padding"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintEnd_toEndOf="@id/title"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:src="@drawable/example_image" />
+
+    <TextView
+        android:id="@+id/originalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/medium_gray"
+        tools:text="R$ 649"
+        app:layout_constraintTop_toBottomOf="@id/productImage"
+        app:layout_constraintStart_toStartOf="@id/productImage" />
+
+    <View
+        android:id="@+id/strikethroughLine"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/medium_gray"
+        app:layout_constraintStart_toStartOf="@+id/originalPrice"
+        app:layout_constraintEnd_toEndOf="@id/originalPrice"
+        app:layout_constraintTop_toTopOf="@id/originalPrice"
+        app:layout_constraintBottom_toBottomOf="@id/originalPrice" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
