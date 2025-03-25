@@ -6,10 +6,12 @@
     <dimen name="products_list_image_padding">8dp</dimen>
     <dimen name="small_text">9sp</dimen>
     <dimen name="medium_text">14sp</dimen>
+    <dimen name="large_text">20sp</dimen>
     <dimen name="list_integer_price_text">18sp</dimen>
     <dimen name="list_fractional_price_text">9sp</dimen>
     <dimen name="detail_integer_price_text">28sp</dimen>
     <dimen name="detail_fractional_price_text">14sp</dimen>
     <dimen name="medium_margin">8dp</dimen>
     <dimen name="large_margin">16dp</dimen>
+    <dimen name="error_icon_size">120dp</dimen>
 </resources>

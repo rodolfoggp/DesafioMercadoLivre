@@ -15,4 +15,7 @@
     <string name="price_in_brl">R$ %1$s</string>
     <string name="installments">em %1$dx R$ %2$s</string>
     <string name="no_interest">sem juros</string>
+    <string name="no_internet_error">Parece que não há \nconexão com a internet</string>
+    <string name="something_bad_happened_error">Algo de errado aconteceu\nTente novamente mais tarde</string>
+
 </resources>

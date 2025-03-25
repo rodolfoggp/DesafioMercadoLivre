@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.desafiomercadolivre.R
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onStateChange
 import com.desafiomercadolivre.architecture.extensions.startActivity
@@ -14,6 +16,9 @@ import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivityProductsListBinding
 import com.desafiomercadolivre.product.domain.model.Product
 import com.desafiomercadolivre.product.presentation.details.ProductDetailsActivity
+import com.desafiomercadolivre.product.presentation.list.ProductsListViewModel.ProductsListError
+import com.desafiomercadolivre.product.presentation.list.ProductsListViewModel.ProductsListError.NO_INTERNET
+import com.desafiomercadolivre.product.presentation.list.ProductsListViewModel.ProductsListError.UNKNOWN_ERROR
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction.ShowSearchScreen
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListState
@@ -27,6 +32,7 @@ class ProductsListActivity : AppCompatActivity() {
     private val binding by viewBinding(ActivityProductsListBinding::inflate)
     private val viewModel: ProductsListViewModel by viewModel()
     private val productsAdapter = ProductsAdapter(::onProductClicked)
+    private val glide by lazy { Glide.with(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,9 +64,33 @@ class ProductsListActivity : AppCompatActivity() {
     }
 
     private fun handleState(state: ProductsListState) = with(state) {
-        binding.loading.isVisible = isLoading
-        binding.recyclerView.isVisible = !isLoading
-        productsAdapter.updateData(products)
+        with(binding) {
+            loading.isVisible = isLoading
+
+            errorView.root.isVisible = error?.handleError() != null
+
+            recyclerView.isVisible = !isLoading && error == null
+            productsAdapter.updateData(products ?: emptyList())
+        }
+    }
+
+    private fun ProductsListError.handleError() {
+        val errorMessage: String
+        val icon: Int
+        when (this) {
+            UNKNOWN_ERROR -> {
+                icon = R.drawable.ic_warning
+                errorMessage = getString(R.string.something_bad_happened_error)
+            }
+            NO_INTERNET -> {
+                icon = R.drawable.ic_no_internet
+                errorMessage = getString(R.string.no_internet_error)
+            }
+        }
+        with(binding.errorView) {
+            glide.load(icon).into(errorIcon)
+            errorText.text = errorMessage
+        }
     }
 
     private fun handleAction(action: ProductsListAction) {

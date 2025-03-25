@@ -16,7 +16,12 @@ class ProductsListViewModel(
         val products = searchProductsUseCase(query)
         changeState { it.copy(products = products, isLoading = false) }
     }
+
     fun onSearchViewClicked() = sendAction { ShowSearchScreen }
 
+    enum class ProductsListError {
+        NO_INTERNET,
+        UNKNOWN_ERROR
+    }
 }
 
