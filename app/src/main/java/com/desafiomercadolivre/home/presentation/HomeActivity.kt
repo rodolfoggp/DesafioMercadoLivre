@@ -1,8 +1,9 @@
 package com.desafiomercadolivre.home.presentation
 
-import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
 import com.desafiomercadolivre.databinding.ActivityHomeBinding
@@ -21,7 +22,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupSearchBarAction() = with(binding) {
         searchBar.setOnClickListener {
-            startActivity(Intent(this@HomeActivity, SearchActivity::class.java))
+            startActivity(SearchActivity::class.java) {
+                addFlags(FLAG_ACTIVITY_NO_HISTORY)
+            }
         }
     }
 }
