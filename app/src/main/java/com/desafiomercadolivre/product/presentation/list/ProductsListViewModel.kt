@@ -16,7 +16,7 @@ class ProductsListViewModel(
         val products = searchProductsUseCase(query)
         changeState { it.copy(products = products, isLoading = false) }
     }
+    fun onSearchViewClicked() = sendAction { ShowSearchScreen }
 
-    fun onSearchEditTextClicked() = sendAction { ShowSearchScreen }
 }
 

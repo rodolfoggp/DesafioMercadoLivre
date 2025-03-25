@@ -1,5 +1,6 @@
 package com.desafiomercadolivre.product.presentation.list
 
+import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -16,6 +17,7 @@ import com.desafiomercadolivre.product.presentation.details.ProductDetailsActivi
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction.ShowSearchScreen
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListState
+import com.desafiomercadolivre.search.presentation.SearchActivity
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,6 +49,7 @@ class ProductsListActivity : AppCompatActivity() {
                 )
             )
         }
+        toolbar.searchView.setOnClickListener { viewModel.onSearchViewClicked() }
     }
 
     private fun initializeViewModel() {
@@ -62,7 +65,13 @@ class ProductsListActivity : AppCompatActivity() {
 
     private fun handleAction(action: ProductsListAction) {
         when (action) {
-            ShowSearchScreen -> TODO()
+            ShowSearchScreen -> showSearchScreen()
+        }
+    }
+
+    private fun showSearchScreen() {
+        startActivity(SearchActivity::class.java) {
+            addFlags(FLAG_ACTIVITY_NO_HISTORY)
         }
     }
 
