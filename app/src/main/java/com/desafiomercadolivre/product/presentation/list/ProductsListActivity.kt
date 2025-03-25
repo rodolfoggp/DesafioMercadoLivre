@@ -56,6 +56,7 @@ class ProductsListActivity : AppCompatActivity() {
 
     private fun handleState(state: ProductsListState) = with(state) {
         binding.loading.isVisible = isLoading
+        binding.recyclerView.isVisible = !isLoading
         productsAdapter.updateData(products)
     }
 

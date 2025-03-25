@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupSearchBarAction() = with(binding) {
-        searchBar.setOnClickListener {
+        toolbar.searchView.setOnClickListener {
             startActivity(SearchActivity::class.java) {
                 addFlags(FLAG_ACTIVITY_NO_HISTORY)
             }
