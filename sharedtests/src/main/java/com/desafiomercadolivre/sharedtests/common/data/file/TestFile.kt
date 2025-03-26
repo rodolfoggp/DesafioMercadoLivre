@@ -5,7 +5,6 @@ import java.net.URL
 
 class TestFile(private val url: URL) {
     fun text() = url.readText()
-    fun textReplacing(vararg values: Any) = String.format(text(), *values)
 }
 
 fun Any.file(path: String): TestFile {

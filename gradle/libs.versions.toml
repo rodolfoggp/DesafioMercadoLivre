@@ -7,11 +7,11 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.3"
+activity = "1.10.1"
 constraintlayout = "2.2.0"
 coroutines = "1.8.0"
 
-koin = "3.5.0"
+koin = "3.5.6"
 retrofit = "2.6.4"
 kotlinxSerialization = "1.6.3"
 kotlinxConverter = "0.8.0"
@@ -21,7 +21,7 @@ okHttp = "4.10.0"
 mockWebServer = "4.10.0"
 truth = "1.4.4"
 coreTesting = "1.1.1"
-
+espressoIntents = "3.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -43,8 +43,9 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 mock-web-server = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockWebServer" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
-truth = { module = "com.google.truth:truth", version.ref = "truth"}
-core-testing = { module = "android.arch.core:core-testing", version.ref = "coreTesting"}
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+core-testing = { module = "android.arch.core:core-testing", version.ref = "coreTesting" }
+espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoIntents" }
 
 
 [plugins]
@@ -86,5 +87,6 @@ sharedtests = [
     "koin",
     "coroutines-test",
     "truth",
-    "core-testing"
+    "core-testing",
+    "espresso-intents"
 ]

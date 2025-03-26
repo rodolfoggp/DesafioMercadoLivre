@@ -9,7 +9,9 @@ class SearchViewModel(
 ): ActionViewModel<SearchAction>() {
     fun onSearchButtonClicked(query: String) {
         if (isValidQuery(query)) {
-            sendAction { SearchAction.Search(query.trim()) }
+            sendAction {
+                SearchAction.Search(query.trim())
+            }
         }
     }
 }
