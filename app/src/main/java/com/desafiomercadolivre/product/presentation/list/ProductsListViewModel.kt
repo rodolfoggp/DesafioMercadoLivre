@@ -38,4 +38,3 @@ class ProductsListViewModel(
         UNKNOWN_ERROR
     }
 }
-

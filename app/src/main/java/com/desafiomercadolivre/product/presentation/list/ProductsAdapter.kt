@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.desafiomercadolivre.common.resource.ResourceProvider
 import com.desafiomercadolivre.databinding.ProductsListItemBinding
 import com.desafiomercadolivre.product.domain.model.Product
+import com.desafiomercadolivre.product.presentation.ProductsFormatter
 
 class ProductsAdapter(
     val onClickAction: (Product) -> Unit,
-) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
+    override val resourceProvider: ResourceProvider,
+) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>(), ProductsFormatter {
 
     private var products: List<Product> = listOf()
 
@@ -26,7 +29,7 @@ class ProductsAdapter(
         val glide = Glide.with(context)
         val product = products[position]
         with(holder.binding) {
-            glide.load(product.imageUrl)
+            glide.load(product.imageUrl.withHttps())
                 .into(productImage)
             brandTextView.apply {
                 text = product.brand
@@ -34,12 +37,14 @@ class ProductsAdapter(
             }
             titleTextView.text = product.title
             originalPriceTextView.apply {
-                text = product.originalPrice
+                text = product.originalPrice?.asPriceString()?.withCurrency()
                 isVisible = !text.isNullOrBlank()
             }
-            priceIntegerTextView.text = product.integerPrice
-            priceFractionalTextView.text = product.fractionalPrice
-            installmentsConditionsTextView.text = product.installments
+            val (priceInteger, priceFractional) = priceAsIntegerAndFractional(product.price)
+            priceIntegerTextView.text = priceInteger.withCurrency()
+            priceFractionalTextView.text = priceFractional
+            installmentsConditionsTextView.text =
+                product.installments?.let { getInstallmentsText(it) }
             freeShippingTagTextView.isVisible = product.hasFreeShipping
         }
     }

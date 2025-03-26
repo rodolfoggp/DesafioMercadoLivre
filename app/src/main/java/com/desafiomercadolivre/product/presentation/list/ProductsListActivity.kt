@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.desafiomercadolivre.R
+import com.desafiomercadolivre.architecture.extensions.getFromKoin
 import com.desafiomercadolivre.architecture.extensions.onAction
 import com.desafiomercadolivre.architecture.extensions.onStateChange
 import com.desafiomercadolivre.architecture.extensions.startActivity
@@ -31,7 +32,7 @@ class ProductsListActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityProductsListBinding::inflate)
     private val viewModel: ProductsListViewModel by viewModel()
-    private val productsAdapter = ProductsAdapter(::onProductClicked)
+    private val productsAdapter = ProductsAdapter(::onProductClicked, getFromKoin())
     private val glide by lazy { Glide.with(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

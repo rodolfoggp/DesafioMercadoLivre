@@ -11,8 +11,10 @@ import com.desafiomercadolivre.architecture.extensions.onStateChange
 import com.desafiomercadolivre.architecture.extensions.startActivity
 import com.desafiomercadolivre.architecture.extensions.useEdgeToEdge
 import com.desafiomercadolivre.architecture.extensions.viewBinding
+import com.desafiomercadolivre.common.resource.ResourceProvider
 import com.desafiomercadolivre.databinding.ActivityProductDetailsBinding
 import com.desafiomercadolivre.product.domain.model.Product
+import com.desafiomercadolivre.product.presentation.ProductsFormatter
 import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel.ProductDetailsError
 import com.desafiomercadolivre.product.presentation.details.ProductDetailsViewModel.ProductDetailsError.NULL_PRODUCT
 import com.desafiomercadolivre.product.presentation.details.model.ProductDetailsAction
@@ -20,13 +22,15 @@ import com.desafiomercadolivre.product.presentation.details.model.ProductDetails
 import com.desafiomercadolivre.product.presentation.details.model.ProductDetailsState
 import com.desafiomercadolivre.search.presentation.SearchActivity
 import kotlinx.serialization.json.Json
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductDetailsActivity : AppCompatActivity() {
+class ProductDetailsActivity : AppCompatActivity(), ProductsFormatter {
 
     private val binding by viewBinding(ActivityProductDetailsBinding::inflate)
     private val viewModel by viewModel<ProductDetailsViewModel>()
     private val glide by lazy { Glide.with(this) }
+    override val resourceProvider: ResourceProvider by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,19 +73,20 @@ class ProductDetailsActivity : AppCompatActivity() {
     }
 
     private fun Product.showProduct() = with(binding) {
-        glide.load(imageUrl).into(productImage)
+        glide.load(imageUrl.withHttps()).into(productImage)
         brandTextView.apply {
             text = brand
             isVisible = !text.isNullOrBlank()
         }
         titleTextView.text = title
         originalPriceTextView.apply {
-            text = originalPrice
+            text = originalPrice?.asPriceString()?.withCurrency()
             isVisible = !text.isNullOrBlank()
         }
-        priceIntegerTextView.text = integerPrice
-        priceFractionalTextView.text = fractionalPrice
-        installmentsConditionsTextView.text = installments
+        val (priceInteger, priceFractional) = priceAsIntegerAndFractional(price)
+        priceIntegerTextView.text = priceInteger
+        priceFractionalTextView.text = priceFractional
+        installmentsConditionsTextView.text = installments?.let { getInstallmentsText(it) }
         freeShippingTagTextView.isVisible = hasFreeShipping
     }
 
