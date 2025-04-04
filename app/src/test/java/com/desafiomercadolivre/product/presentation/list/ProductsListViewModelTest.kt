@@ -1,12 +1,10 @@
 package com.desafiomercadolivre.product.presentation.list
 
-import com.desafiomercadolivre.architecture.extensions.getFromKoin
+import com.desafiomercadolivre.architecture.extensions.inject
 import com.desafiomercadolivre.rule.UnitTestRule
 import com.desafiomercadolivre.sharedtests.robot.products
 import com.google.common.truth.Truth.assertThat
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
@@ -14,16 +12,10 @@ class ProductsListViewModelTest {
     @get:Rule
     val rule = UnitTestRule()
 
-    private lateinit var viewModel: ProductsListViewModel
-    private val dispatcher = UnconfinedTestDispatcher()
-
-    @Before
-    fun setUp() {
-        viewModel = ProductsListViewModel(getFromKoin(), dispatcher)
-    }
+    private val viewModel: ProductsListViewModel by inject()
 
     @Test
-    fun test() = runTest(dispatcher) {
+    fun test() = runTest {
         val query = "query"
         val expectedProducts = products { expectedProducts }
         products { searchEndpointReturnsSuccessFor(query) }
