@@ -8,14 +8,16 @@ import com.desafiomercadolivre.product.presentation.list.ProductsListViewModel.P
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListAction.ShowSearchScreen
 import com.desafiomercadolivre.product.presentation.list.model.ProductsListState
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class ProductsListViewModel(
     val searchProductsUseCase: SearchProductsUseCase,
+    val dispatcher: CoroutineDispatcher,
 ) : ViewModel<ProductsListState, ProductsListAction>(ProductsListState()) {
 
-    fun searchProducts(query: String?) = viewModelScope.launch {
+    fun searchProducts(query: String?) = viewModelScope.launch(dispatcher) {
         runCatching {
             changeState { ProductsListState(isLoading = true) }
             val products = searchProductsUseCase(query ?: throw IllegalArgumentException())

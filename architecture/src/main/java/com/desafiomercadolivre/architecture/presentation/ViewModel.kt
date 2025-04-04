@@ -26,4 +26,8 @@ abstract class ViewModel<State, Action>(
             _action.emit(action())
         }
     }
+
+/*    fun launch(block: suspend CoroutineScope.() -> Unit): Job {
+        return viewModelScope.launch(dispatcher) { block() }
+    }*/
 }
